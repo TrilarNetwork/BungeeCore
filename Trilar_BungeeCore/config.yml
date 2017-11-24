@@ -1,0 +1,9 @@
+settings:
+  talkInStaffChat: '!'
+  banMessage: '&cYou cannot join as you have been banned for: \n%reason%'
+  kickOnWarn: true
+  database:
+    hostname: '185.211.51.30'
+    port: 3306
+    username: 'root'
+    password: 'Pedo1234'
