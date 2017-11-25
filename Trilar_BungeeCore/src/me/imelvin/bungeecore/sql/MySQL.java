@@ -88,7 +88,8 @@ public class MySQL {
 	public Connection openConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database, this.user, this.password);
+			Connection conn = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database 
+					+ "?connectTimeout=0&socketTimeout=0&autoReconnect=true", this.user, this.password);
 			this.conn = conn;
 			return conn;
 		} catch (SQLException e) {
