@@ -5,8 +5,8 @@ import me.imelvin.bungeecore.commands.Maintenance;
 import me.imelvin.bungeecore.handlers.BanHandler;
 import me.imelvin.bungeecore.handlers.BanHandler.BanType;
 import me.imelvin.bungeecore.handlers.IPSaver;
-import me.imelvin.bungeecore.utils.Perm;
-import me.imelvin.bungeecore.utils.PermGroup;
+//import me.imelvin.bungeecore.utils.Perm;
+//import me.imelvin.bungeecore.utils.PermGroup;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -41,15 +41,15 @@ public class PostLogin implements Listener {
 			msg = ChatColor.translateAlternateColorCodes('&', msg).trim();
 			p.disconnect(new TextComponent(msg));
 		} else {
-			if (Perm.getGroup(p) == null) {
-				Perm.updateGroup(p, PermGroup.MEMBER);
-			} 
-			Perm.loginPlayer(p.getName());
+		//	if (Perm.getGroup(p) == null) {
+			//	Perm.updateGroup(p, PermGroup.MEMBER);
+			//} 
+			//Perm.loginPlayer(p.getName());
 		}
 		if (Maintenance.m) {
-			if (!Perm.hasPerm(p, PermGroup.BUILDER)) {
+			//if (!Perm.hasPerm(p, PermGroup.BUILDER)) {
 				p.disconnect(new TextComponent(ChatColor.DARK_AQUA + "Trilar -> Onderhoud\nJe bent gekicked omdat de server in onderhoud is. \nProbeer het later opnieuw."));
 			}
 		}
 	}
-}
+//}
