@@ -14,16 +14,16 @@ public class Maintenance extends Command {
 	public Maintenance() {
 		super("maintenance");
 	}
-	
+
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-			if (m) {
-				m = false;
-				p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have disabled Maintenance Mode!"));
-			} else {
-				m = true;
-				p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have enabled Maintenance Mode!"));
-			}
+		if (m) {
+			m = false;
+			p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have disabled Maintenance Mode!"));
+		} else {
+			m = true;
+			p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have enabled Maintenance Mode!"));
+		}
 	}
 }
