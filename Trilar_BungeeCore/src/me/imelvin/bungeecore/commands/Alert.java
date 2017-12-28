@@ -1,8 +1,6 @@
 package me.imelvin.bungeecore.commands;
 
 import me.imelvin.bungeecore.Main;
-import me.imelvin.bungeecore.utils.Perm;
-import me.imelvin.bungeecore.utils.PermGroup;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -17,7 +15,6 @@ public class Alert extends Command {
 	
 	@Override
 	public void execute(CommandSender sender, String[] args){
-		ProxiedPlayer p = (ProxiedPlayer) sender;
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < args.length; i++) {
 				sb.append(args[i]).append(" ");

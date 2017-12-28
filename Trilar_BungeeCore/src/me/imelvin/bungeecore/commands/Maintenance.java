@@ -1,7 +1,5 @@
 package me.imelvin.bungeecore.commands;
 
-import me.imelvin.bungeecore.utils.Perm;
-import me.imelvin.bungeecore.utils.PermGroup;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;

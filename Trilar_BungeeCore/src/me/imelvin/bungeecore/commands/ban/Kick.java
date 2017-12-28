@@ -1,8 +1,6 @@
 package me.imelvin.bungeecore.commands.ban;
 
 import me.imelvin.bungeecore.handlers.BanHandler;
-import me.imelvin.bungeecore.utils.Perm;
-import me.imelvin.bungeecore.utils.PermGroup;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -18,7 +16,6 @@ public class Kick extends Command {
 	
 	@Override
 	public void execute(CommandSender sender, String[] args) {
-		ProxiedPlayer p = (ProxiedPlayer) sender;
 			if (args.length == 0) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /kick <player> [reason]"));
 			} else if (args.length == 1) {

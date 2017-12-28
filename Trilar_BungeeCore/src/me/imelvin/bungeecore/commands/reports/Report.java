@@ -3,8 +3,6 @@ package me.imelvin.bungeecore.commands.reports;
 import me.imelvin.bungeecore.Main;
 import me.imelvin.bungeecore.handlers.Chat;
 import me.imelvin.bungeecore.handlers.ReportHandler;
-import me.imelvin.bungeecore.utils.Perm;
-import me.imelvin.bungeecore.utils.PermGroup;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -19,7 +17,6 @@ public class Report extends Command {
 	
 	@Override
 	public void execute(CommandSender sender, String[] args) {
-		ProxiedPlayer p = (ProxiedPlayer) sender;
 			if (args.length < 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /report <message>"));
 			} else {
