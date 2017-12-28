@@ -10,6 +10,7 @@ import java.util.Map;
 import me.imelvin.bungeecore.Main;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
+@Deprecated
 public class Perm {
 	public static Map<String, PermGroup> pPerms = new HashMap<String, PermGroup>();
 	

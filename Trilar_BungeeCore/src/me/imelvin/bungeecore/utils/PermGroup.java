@@ -12,6 +12,7 @@ import static net.md_5.bungee.api.ChatColor.YELLOW;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
 import static net.md_5.bungee.api.ChatColor.WHITE;
 
+@Deprecated
 public enum PermGroup {
 
 	LEAD_DEVELOPER(550, GRAY + "(" + DARK_AQUA + "Lead" + GRAY + "-" + DARK_AQUA + "Developer" + GRAY + ") " + AQUA, "Lead-Developer"),
