@@ -30,8 +30,7 @@ public class Ban extends Command {
 		} else if (args.length > 1) {
 			String name = args[0];
 			if (BanHandler.isBanned(name)) {
-				sender.sendMessage(new TextComponent(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW
-						+ " has already been banned!"));
+				sender.sendMessage(new TextComponent(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has already been banned!"));
 			} else {
 				String reason = "";
 				for (int i = 1; i < args.length; i++) {
