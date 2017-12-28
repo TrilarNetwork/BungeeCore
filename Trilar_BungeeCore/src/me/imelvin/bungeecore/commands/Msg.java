@@ -21,7 +21,6 @@ public class Msg extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer pl = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(pl, PermGroup.MEMBER)) {
 			if (args.length < 2) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /msg <player> <text>"));
 			} else {
@@ -56,9 +55,6 @@ public class Msg extends Command {
 							+ " has not been found!"));
 				}
 			}
-		} else {
-			pl.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 	
 	public static String sendSenderPrefix(String targetName) {

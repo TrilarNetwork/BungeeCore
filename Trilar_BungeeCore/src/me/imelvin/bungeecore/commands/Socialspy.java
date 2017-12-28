@@ -18,25 +18,20 @@ public class Socialspy extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer pl = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(pl, PermGroup.HELPER)) {
 			if (!(sender instanceof ProxiedPlayer)) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "You must be a player to perform this command!"));
 			} else {
-				ProxiedPlayer p = ProxyServer.getInstance().getPlayer(sender.getName());
 				if (args.length != 0) {
-					p.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /socialspy"));
+					sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /socialspy"));
 				} else {
-					if (Msg.socialspy.contains(p.getName())) {
-						Msg.socialspy.remove(p.getName());
-						p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "disabled" + ChatColor.DARK_AQUA + "!"));
+					if (Msg.socialspy.contains(sender.getName())) {
+						Msg.socialspy.remove(sender.getName());
+						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "disabled" + ChatColor.DARK_AQUA + "!"));
 					} else {
-						Msg.socialspy.add(p.getName());
-						p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "enabled" + ChatColor.DARK_AQUA + "!"));
+						Msg.socialspy.add(sender.getName());
+						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "enabled" + ChatColor.DARK_AQUA + "!"));
 					}
 				}
 			}
-		} else {
-			pl.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

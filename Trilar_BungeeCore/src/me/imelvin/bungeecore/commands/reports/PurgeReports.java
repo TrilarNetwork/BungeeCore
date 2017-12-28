@@ -21,7 +21,6 @@ public class PurgeReports extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.HELPER)) {
 			if (confirm.contains(sender.getName())) {
 				sender.sendMessage(new TextComponent(ChatColor.GOLD + "Here goes..."));
 				ReportHandler.purgeOldTickets();
@@ -29,8 +28,5 @@ public class PurgeReports extends Command {
 			} else {
 				sender.sendMessage(new TextComponent(ChatColor.GOLD + "Are you sure you want to delete all CLOSED reports? Type /purgereports if so."));
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do no have permission to perform this command!"));
-		}
 	}
 }

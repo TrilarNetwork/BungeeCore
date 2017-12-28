@@ -20,7 +20,6 @@ public class Warnings extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.HELPER)) {
 			if (args.length != 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /delwarn <player> <warninglabel>"));
 			} else {
@@ -37,8 +36,5 @@ public class Warnings extends Command {
 					}
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

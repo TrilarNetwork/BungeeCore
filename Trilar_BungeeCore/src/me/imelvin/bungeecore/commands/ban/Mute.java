@@ -23,7 +23,6 @@ public class Mute extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.HELPER)) {
 			if (args.length == 0) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /mute <player> <time>"));
 			} else if (args.length == 1) {
@@ -107,8 +106,5 @@ public class Mute extends Command {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "That player is not online!"));
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

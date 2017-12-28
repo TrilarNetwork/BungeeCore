@@ -21,7 +21,6 @@ public class CheckReport extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.HELPER)) {
 			if (args.length != 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /checkreport <id>"));
 			} else {
@@ -39,8 +38,5 @@ public class CheckReport extends Command {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "You must use a number! (id)"));
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

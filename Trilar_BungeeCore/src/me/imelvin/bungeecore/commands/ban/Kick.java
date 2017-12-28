@@ -19,7 +19,6 @@ public class Kick extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.MODERATOR)) {
 			if (args.length == 0) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /kick <player> [reason]"));
 			} else if (args.length == 1) {
@@ -41,8 +40,5 @@ public class Kick extends Command {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "This player is not online!"));
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

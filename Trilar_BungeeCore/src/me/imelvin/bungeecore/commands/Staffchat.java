@@ -24,7 +24,6 @@ public class Staffchat extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.HELPER)) {
 			if (args.length == 0) {
 				if (global.contains(sender.getName())) {
 					global.remove(sender.getName());
@@ -73,8 +72,5 @@ public class Staffchat extends Command {
 					sender.sendMessage(new TextComponent(ChatColor.DARK_RED + "Invalid usage! Use: /staffchat [helper|moderator|admin|owner|dev]"));
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

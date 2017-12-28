@@ -21,7 +21,6 @@ public class Reply extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer pl = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(pl, PermGroup.MEMBER)) {
 			if (args.length < 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /reply <text>"));
 			} else {
@@ -101,8 +100,5 @@ public class Reply extends Command {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "You have no one to reply to!"));
 				}
 			}
-		} else {
-			pl.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

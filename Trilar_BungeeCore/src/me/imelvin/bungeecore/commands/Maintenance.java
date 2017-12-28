@@ -18,7 +18,6 @@ public class Maintenance extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.ADMIN)) {
 			if (m) {
 				m = false;
 				p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have disabled Maintenance Mode!"));
@@ -26,8 +25,5 @@ public class Maintenance extends Command {
 				m = true;
 				p.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have enabled Maintenance Mode!"));
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

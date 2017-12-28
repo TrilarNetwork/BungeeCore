@@ -23,7 +23,6 @@ public class Tempban extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.MODERATOR)) {
 			if (args.length < 2) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /tempban <player> <time> [reason]"));
 			} else if (args.length == 2) {
@@ -144,8 +143,5 @@ public class Tempban extends Command {
 					}, t, tu);
 				}
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

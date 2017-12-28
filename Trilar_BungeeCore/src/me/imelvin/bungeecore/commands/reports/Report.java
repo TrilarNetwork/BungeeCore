@@ -20,7 +20,6 @@ public class Report extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.MEMBER)) {
 			if (args.length < 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /report <message>"));
 			} else {
@@ -37,8 +36,5 @@ public class Report extends Command {
 				sender.sendMessage(new TextComponent(Main.prefix + "You have successfully created a report ticket! Our Staff Team will take action as soon as possible."));
 				Chat.msgAllOps(Main.prefix + "Player " + sender.getName() + " has created a report.");
 			}
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}
 }

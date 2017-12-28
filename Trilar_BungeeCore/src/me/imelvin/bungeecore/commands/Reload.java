@@ -19,7 +19,6 @@ public class Reload extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		ProxiedPlayer p = (ProxiedPlayer) sender;
-		if (Perm.hasPerm(p, PermGroup.ADMIN)) {
 			sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Reloading..."));
 			if (!Main.sql.hasConnection()) {
 				Main.sql.openConnection();
@@ -29,8 +28,5 @@ public class Reload extends Command {
 			ConfigManager.getInstance().reloadConfig();
 			sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Successfully created tables that did not exist..."));
 			sender.sendMessage(new TextComponent(ChatColor.DARK_GREEN + "Reload of Trilar Core has been completed!"));
-		} else {
-			p.sendMessage(new TextComponent(ChatColor.RED + "You do not have permission to perform this command!"));
-		}
 	}	
 }
