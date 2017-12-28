@@ -49,7 +49,7 @@ public class PostLogin implements Listener {
 		if (Maintenance.m) {
 			//if (!Perm.hasPerm(p, PermGroup.BUILDER)) {
 				p.disconnect(new TextComponent(ChatColor.DARK_AQUA + "Trilar -> Onderhoud\nJe bent gekicked omdat de server in onderhoud is. \nProbeer het later opnieuw."));
-			}
+			//}
 		}
 	}
-//}
+}
