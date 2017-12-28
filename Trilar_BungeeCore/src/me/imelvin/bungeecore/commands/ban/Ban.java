@@ -10,8 +10,8 @@ import net.md_5.bungee.api.plugin.Command;
 public class Ban extends Command {
 
 	public Ban() {
-		super("ban", "", "trilar.bungeecore.ban");
-		//command, alias, permission
+		super("ban", "trilar.bungeecore.ban", "");
+		//command, permission, alias
 		//No alias = "",
 		//No permission is leave it out or ""
 	}
