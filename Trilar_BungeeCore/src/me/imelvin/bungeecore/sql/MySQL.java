@@ -82,7 +82,7 @@ public class MySQL {
 		this.database = db;
 		this.user = user;
 		this.password = pw;
-		this.conn = openConnection(hostname, port, db, user, pw);
+		this.conn = openConnection();
 	}
 
 	public Connection openConnection() {
