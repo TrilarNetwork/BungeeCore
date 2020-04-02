@@ -168,4 +168,6 @@ public class MySQL {
 			openConnection();
 		}
 	}
+
+	// CREATE METHOD TO READ GROUP FROM DATABASE
 }
