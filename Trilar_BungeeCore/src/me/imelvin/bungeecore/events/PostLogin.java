@@ -14,12 +14,18 @@ import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-public class PostLogin implements Listener {
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+
+ public class PostLogin implements Listener {
 
 	@EventHandler
 	public void onPost(PostLoginEvent e) {
 		ProxiedPlayer p = e.getPlayer();
-		IPSaver.saveIP(p.getName(), p.getAddress().toString());
+		InetAddress ip = p.getPendingConnection().getVirtualHost().getAddress();
+		if (ip != null) {
+			IPSaver.saveIP(p.getName(), ip.toString());
+		}
 		if (BanHandler.isBanned(p.getName())) {
 			String reason = "";
 			long tbantime = 0;

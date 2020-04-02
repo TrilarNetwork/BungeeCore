@@ -98,6 +98,6 @@ public class Main extends Plugin {
 	}
 
 	private boolean stringCheck(String toCheck) {
-		return (!toCheck.isEmpty() && !toCheck.isBlank());
+		return (!toCheck.isEmpty()); //!toCheck.isBlank());
 	}
 }
