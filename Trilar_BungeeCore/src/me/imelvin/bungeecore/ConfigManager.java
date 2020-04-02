@@ -36,7 +36,7 @@ public class ConfigManager {
 		try {
 			config = prov.load(new File(p.getDataFolder(), "config.yml"));
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 		if (this.config.get("settings.talkInStaffChat") == null) {
 			this.config.set("settings.talkInStaffChat", "!");
@@ -48,19 +48,19 @@ public class ConfigManager {
 			this.config.set("settings.kickOnWarn", true);
 		}
 		if (this.config.get("settings.database.hostname") == null) {
-			this.config.set("settings.database.hostname", "127.0.0.1");
+			this.config.set("settings.database.hostname", "tropicalhost.nl");
 		}
 		if (this.config.get("settings.database.port") == null) {
 			this.config.set("settings.database.port", 3306);
 		}
 		if (this.config.get("settings.database.database") == null) {
-			this.config.set("settings.database.database", "core");
+			this.config.set("settings.database.database", "mininetw_tbungee");
 		}
 		if (this.config.get("settings.database.username") == null) {
-			this.config.set("settings.database.username", "root");
+			this.config.set("settings.database.username", "mininetw_tbungee");
 		}
 		if (this.config.get("settings.database.password") == null) {
-			this.config.set("settings.database.password", "Mebra2134");
+			this.config.set("settings.database.password", "Trilar2018");
 		}
 		saveConfig();
 		isSetup = true;

@@ -44,6 +44,7 @@ public class Main extends Plugin {
 	
 	public void onEnable() {
 		p = this;
+		init();
 		sql = new MySQL(hostname, port, db, user, pass);
 		if (!sql.hasConnection()) {
 			sql.openConnection();
@@ -75,7 +76,6 @@ public class Main extends Plugin {
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new ChatEvents());
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new Disconnect());
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new PostLogin());
-		init();
 	}
 	
 	public void onDisable() {
@@ -85,9 +85,9 @@ public class Main extends Plugin {
 	}
 	
 	public static void init() {
-		db = c.getConfig().getString("settings.database.database");
 		hostname = c.getConfig().getString("settings.database.hostname");
 		port = c.getConfig().getInt("settings.database.port");
+		db = c.getConfig().getString("settings.database.database");
 		user = c.getConfig().getString("settings.database.username");
 		pass = c.getConfig().getString("settings.database.password");
 	}

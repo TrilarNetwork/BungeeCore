@@ -3,8 +3,8 @@ settings:
   banMessage: '&cYou cannot join as you have been banned for: \n%reason%'
   kickOnWarn: true
   database:
-    hostname: '127.0.0.1'
+    hostname: tropicalhost.nl
     port: 3306
-    database: core
-    username: root
-    password: Mebra2134
+    database: mininetw_tbungee
+    username: mininetw_tbungee
+    password: Trilar2018
