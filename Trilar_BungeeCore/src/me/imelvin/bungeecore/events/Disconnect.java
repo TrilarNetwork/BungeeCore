@@ -12,7 +12,7 @@ public class Disconnect implements Listener {
 	@EventHandler
 	public void onDisconnect(PlayerDisconnectEvent e) {
 		ProxiedPlayer p = e.getPlayer();
-		IPSaver.saveIP(p.getName(), e.getPlayer().getAddress().toString());
+		IPSaver.saveIP(p.getName(), e.getPlayer().getPendingConnection().getVirtualHost().getAddress().toString());
 		//Perm.logoutPlayer(p.getName());
 	}
 }
