@@ -13,7 +13,7 @@ public class PurgeReports extends Command {
 	public PurgeReports() {
 		super("purgereports");
 	}
-	ArrayList<String> confirm = new ArrayList<String>();
+	ArrayList<String> confirm = new ArrayList<>();
 	
 	@Override
 	public void execute(CommandSender sender, String[] args) {

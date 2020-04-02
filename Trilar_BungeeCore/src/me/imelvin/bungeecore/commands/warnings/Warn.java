@@ -37,7 +37,7 @@ public class Warn extends Command {
 				ProxiedPlayer tp = ProxyServer.getInstance().getPlayer(name);
 				if (tp.isConnected() && ConfigManager.getInstance().getConfig().getBoolean("settings.kickOnWarn")) {
 					tp.disconnect(new TextComponent(ChatColor.DARK_AQUA + "You have been warned: \n" + reason));
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been warned (and auto-kicked) by " 
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been warned (and auto-kicked) by "
 							+ ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + " for: "); 
 					Chat.msgAllOps(reason);
 					reason = reason + ChatColor.RED + "(Warn)";
@@ -56,7 +56,7 @@ public class Warn extends Command {
 						Main.p.getLogger().info("Yor Cor > Error:" + e);
 					}	
 				} else {
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been warned by " 
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been warned by "
 							+ ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + " for: "); 
 					Chat.msgAllOps(reason);
 				}

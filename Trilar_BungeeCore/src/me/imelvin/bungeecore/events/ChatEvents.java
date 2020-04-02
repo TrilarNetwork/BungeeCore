@@ -9,7 +9,6 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 public class ChatEvents implements Listener {
-	boolean hasSent = false;
 	public String staffpref = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
 	public String helpersp = ChatColor.GOLD + "[" + ChatColor.YELLOW + "Helper Staff-Chat" + ChatColor.GOLD + "] " + ChatColor.YELLOW;
 	public String modsp = ChatColor.DARK_BLUE + "[" + ChatColor.BLUE + "Moderator Staff-Chat" + ChatColor.DARK_BLUE + "] " + ChatColor.BLUE;

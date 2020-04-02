@@ -32,33 +32,33 @@ public class Banip extends Command {
 						sender.sendMessage(new TextComponent(ChatColor.GREEN + "That player has already been ip-banned!"));
 					} else {
 						ProxiedPlayer tp = ProxyServer.getInstance().getPlayer(args[0]);
-						String ip = tp.getAddress().toString();
+						String ip = tp.getPendingConnection().getVirtualHost().getAddress().toString();
 						BanHandler.setIPBanned(tp.getName(), null, ip);
 					}
 				}
-			} else if (args.length > 1) {
+			} else {
 				if (args[0].contains(".")) {
 					String name = IPSaver.getNameFromIp(args[0]);
 					if (BanHandler.isIPBanned(name, false)) {
 						sender.sendMessage(new TextComponent(ChatColor.GREEN + "That player has already been ip-banned!"));
 					} else {
-						String reason = "";
+						StringBuilder reason = new StringBuilder();
 						for (int i = 1; i < args.length; i++) {
-							reason += args[i] + " ";
+							reason.append(args[i]).append(" ");
 						}
-						BanHandler.setIPBanned(name, reason.trim(), args[0]);
+						BanHandler.setIPBanned(name, reason.toString().trim(), args[0]);
 					}
 				} else {
 					if (BanHandler.isBanned(args[0])) {
 						sender.sendMessage(new TextComponent(ChatColor.GREEN + "That player has already been ip-banned!"));
 					} else {
 						ProxiedPlayer tp = ProxyServer.getInstance().getPlayer(args[0]);
-						String ip = tp.getAddress().toString();
-						String reason = "";
+						String ip = tp.getPendingConnection().getVirtualHost().getAddress().toString();
+						StringBuilder reason = new StringBuilder();
 						for (int i = 1; i < args.length; i++) {
-							reason += args[i] + " ";
+							reason.append(args[i]).append(" ");
 						}
-						BanHandler.setIPBanned(tp.getName(), reason.trim(), ip);
+						BanHandler.setIPBanned(tp.getName(), reason.toString().trim(), ip);
 					}
 				}
 			}

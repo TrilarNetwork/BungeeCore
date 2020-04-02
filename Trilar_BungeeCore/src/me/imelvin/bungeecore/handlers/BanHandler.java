@@ -13,31 +13,23 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class BanHandler {
-	public static HashMap<String, Long> muted = new HashMap<String, Long>();
-	public static enum BanType {
-		TEMP, PERM, IP;
+	public static HashMap<String, Long> muted = new HashMap<>();
+	public enum BanType {
+		TEMP, PERM, IP
 	}
 	
 	public static boolean isBanned(String name) {
-		if (isPermBanned(name) || isTempBanned(name) || isIPBanned(name, false)) {
-			return true;
-		} else {
-			return false;
-		}
+		return isPermBanned(name) || isTempBanned(name) || isIPBanned(name, false);
 	}
 	
 	public static BanType getBanType(String name) {
 		BanType t = null;
-		if (!isBanned(name)) {
-			t = null;
-		} else if (isPermBanned(name)) {
+		if (isPermBanned(name)) {
 			t = BanType.PERM;
 		} else if (isTempBanned(name)) {
 			t = BanType.TEMP;
 		} else if (isIPBanned(name, false)) {
 			t = BanType.IP;
-		} else {
-			t = null;
 		}
 		return t;
 	}
@@ -60,7 +52,7 @@ public class BanHandler {
 		if (tp != null && tp.isConnected()) {
 			tp.disconnect(new TextComponent(ChatColor.RED + "You have been banned for: \n" + ChatColor.translateAlternateColorCodes('&', reason)));
 		}
-		Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
+		Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
 		Chat.msgAllOps(ChatColor.translateAlternateColorCodes('&', reason));
 	}
 	
@@ -106,7 +98,7 @@ public class BanHandler {
 			reason = "You have been kicked from the server!";
 		}
 		try {
-			PreparedStatement s = null;
+			PreparedStatement s;
 			if (getKicks(name) != 0) {
 				s = Main.sql.getConnection().prepareStatement("UPDATE player_kicks SET (kicks='" + (getKicks(name) + 1) + "' AND reason='" 
 						+ reason + "') WHERE player='" + name + "'");
@@ -122,7 +114,7 @@ public class BanHandler {
 		if (tp != null && tp.isConnected()) {
 			tp.disconnect(new TextComponent(ChatColor.RED + "You have been kicked for: \n" + ChatColor.translateAlternateColorCodes('&', reason)));
 		}
-		Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been kicked for:");
+		Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been kicked for:");
 		Chat.msgAllOps(ChatColor.translateAlternateColorCodes('&', reason));
 	}
 	
@@ -184,9 +176,9 @@ public class BanHandler {
 			tp.disconnect(new TextComponent(ChatColor.RED + "You have been banned for: \n" + ChatColor.translateAlternateColorCodes('&', reason) + 
 					ChatColor.RED + "\nYou will be unbanned in " + (time/1000) + " seconds."));
 		}
-		Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
+		Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
 		Chat.msgAllOps(ChatColor.translateAlternateColorCodes('&', reason));
-		Chat.msgAllOps(Main.prefix + "They will be unbanned in " + (time/1000) + " seconds.");
+		Chat.msgAllOps(Main.PREFIX + "They will be unbanned in " + (time/1000) + " seconds.");
 	}
 	
 	public static String getTempBanReason(String name) {
@@ -260,6 +252,7 @@ public class BanHandler {
 			} else if (getBanType(name).equals(BanType.IP)) {
 				s = Main.sql.getConnection().prepareStatement("DELETE FROM player_ipbans WHERE player='" + name + "'");
 			}
+			assert s != null;
 			s.executeUpdate();
 			s.close();
 		} catch (SQLException e) {
@@ -273,7 +266,7 @@ public class BanHandler {
 			Main.sql.openConnection();
 		}
 		try {
-			PreparedStatement s = null;
+			PreparedStatement s;
 			if (mutes == 0) {
 				s = Main.sql.getConnection().prepareStatement("INSERT INTO player_mutes (player, mutes, time) VALUES ('" + name + "', '1', '" + time + "')");
 			} else {
@@ -288,17 +281,11 @@ public class BanHandler {
 	}
 	
 	public static void unmutePlayer(String name) {
-		if (muted.containsKey(name)) {
-			muted.remove(name);
-		}
+		muted.remove(name);
 	}
 	
 	public static boolean isMuted(String name) {
-		if (muted.containsKey(name)) {
-			return true;
-		} else {
-			return false;
-		}
+		return muted.containsKey(name);
 	}
 	
 	public static int getMutes(String name) {
@@ -361,7 +348,7 @@ public class BanHandler {
 		if (tp != null && tp.isConnected()) {
 			tp.disconnect(new TextComponent(ChatColor.RED + "You have been banned for: \n" + ChatColor.translateAlternateColorCodes('&', reason)));
 		}
-		Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
+		Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been banned for: ");
 		Chat.msgAllOps(ChatColor.translateAlternateColorCodes('&', reason));
 	}
 	
@@ -372,7 +359,7 @@ public class BanHandler {
 		}
 		try {
 			Statement s = Main.sql.getConnection().createStatement();
-			ResultSet rs = null;
+			ResultSet rs;
 			if (ip) {
 				rs = s.executeQuery("SELECT * FROM player_ipbans WHERE ip='" + name + "'");
 			} else {
@@ -394,7 +381,7 @@ public class BanHandler {
 			Main.sql.openConnection();
 		}
 		try {
-			PreparedStatement s = null;
+			PreparedStatement s;
 			if (ip) {
 				s = Main.sql.getConnection().prepareStatement("DELETE FROM player_ipbans WHERE ip='" + name + "'");
 			} else {
@@ -414,7 +401,7 @@ public class BanHandler {
 		}
 		try {
 			Statement s = Main.sql.getConnection().createStatement();
-			ResultSet rs = null;
+			ResultSet rs;
 			if (ip) {
 				rs = s.executeQuery("SELECT * FROM player_ipbans WHERE ip='" + name + "'");
 			} else {

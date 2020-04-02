@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Trilar_BungeeCore.jar">
+    <output-path>$USER_HOME$/Desktop/Trilar_BungeeCore-0.0.1.jar</output-path>
+    <root id="archive" name="Trilar_BungeeCore.jar">
+      <element id="archive" name="Trilar_BungeeCore.jar">
+        <element id="module-output" name="Trilar_BungeeCore" />
+      </element>
+    </root>
+  </artifact>
+</component>

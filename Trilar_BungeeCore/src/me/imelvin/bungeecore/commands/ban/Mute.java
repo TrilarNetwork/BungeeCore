@@ -26,12 +26,12 @@ public class Mute extends Command {
 				String name = args[0];
 				if (BanHandler.isMuted(name)) {
 					BanHandler.unmutePlayer(name);
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been unmuted by " + ChatColor.GOLD 
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been unmuted by " + ChatColor.GOLD
 							+ sender.getName() + ChatColor.YELLOW + "!");
 				} else {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "That player is not muted!"));
 				}
-			} else if (args.length >= 2) {
+			} else {
 				ProxiedPlayer tp = ProxyServer.getInstance().getPlayer(args[0]);
 				if (tp.isConnected()) {
 					String toParse = "";
@@ -61,41 +61,42 @@ public class Mute extends Command {
 					long t = 0;
 					String ty = "";
 					TimeUnit tu = null;
-					if (type.equals("s")) {
-						t = time;
-						ty = "second(s)";
-						tu = TimeUnit.SECONDS;
-					} else if (type.equals("m")) {
-						t = time * 60;
-						ty = "minute(s)";
-						tu = TimeUnit.MINUTES;
-					} else if (type.equals("h")) {
-						t = time * 3600;
-						ty = "hour(s)";
-						tu = TimeUnit.HOURS;
-					} else if (type.equals("d")) {
-						t = time * 86400;
-						ty = "day(s)";
-						tu = TimeUnit.DAYS;
+					switch (type) {
+						case "s":
+							t = time;
+							ty = "second(s)";
+							tu = TimeUnit.SECONDS;
+							break;
+						case "m":
+							t = time * 60;
+							ty = "minute(s)";
+							tu = TimeUnit.MINUTES;
+							break;
+						case "h":
+							t = time * 3600;
+							ty = "hour(s)";
+							tu = TimeUnit.HOURS;
+							break;
+						case "d":
+							t = time * 86400;
+							ty = "day(s)";
+							tu = TimeUnit.DAYS;
+							break;
 					}
 					t = t / 1000;
 					long ist = System.currentTimeMillis() + t;
 					BanHandler.mutePlayer(tp.getName(), time);
-					if (args.length >= 2)
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been muted for " + ChatColor.GOLD + time 
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been muted for " + ChatColor.GOLD + time
 							+ ChatColor.YELLOW + " " + ty + " by " + ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + "!");
-					sender.sendMessage(new TextComponent(Main.prefix + "You have muted " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " for " + ChatColor.GOLD 
+					sender.sendMessage(new TextComponent(Main.PREFIX + "You have muted " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " for " + ChatColor.GOLD
 							+ time + ChatColor.YELLOW + " " + ty + "!"));
-					tp.sendMessage(new TextComponent(Main.prefix + "You have been muted by " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " for " 
+					tp.sendMessage(new TextComponent(Main.PREFIX + "You have been muted by " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " for "
 							+ ChatColor.GOLD + time + ChatColor.YELLOW + " " + ty + "!"));
-					ProxyServer.getInstance().getScheduler().schedule(Main.p, new Runnable() {
-						@Override
-						public void run() {
-							if (System.currentTimeMillis() == ist) {
-								if (BanHandler.isMuted(tp.getName())) {
-									BanHandler.unmutePlayer(tp.getName());
-									Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been unmuted! (Time exceeded)");
-								}
+					ProxyServer.getInstance().getScheduler().schedule(Main.p, () -> {
+						if (System.currentTimeMillis() == ist) {
+							if (BanHandler.isMuted(tp.getName())) {
+								BanHandler.unmutePlayer(tp.getName());
+								Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + tp.getName() + ChatColor.YELLOW + " has been unmuted! (Time exceeded)");
 							}
 						}
 					}, t, tu);

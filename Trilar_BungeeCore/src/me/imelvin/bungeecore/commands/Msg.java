@@ -12,9 +12,9 @@ import net.md_5.bungee.api.plugin.Command;
 public class Msg extends Command {
 
 	public Msg() {
-		super("msg", "", new String[] {"tell", "m", "whisper", "w"});
+		super("msg", "", "tell", "m", "whisper", "w");
 	}
-	public static ArrayList<String> socialspy = new ArrayList<String>();
+	public static ArrayList<String> socialspy = new ArrayList<>();
 	
 	@Override
 	public void execute(CommandSender sender, String[] args) {
@@ -28,7 +28,7 @@ public class Msg extends Command {
 						for (int i = 1; i < args.length; i++) {
 							sb.append(args[i]).append(" ");
 						}
-						String msg = "";
+						String msg;
 						if (sender.hasPermission("trilar.chatcolors.use")) {
 							msg = ChatColor.translateAlternateColorCodes('&', sb.toString().trim());
 						} else {
@@ -55,17 +55,14 @@ public class Msg extends Command {
 	}
 	
 	public static String sendSenderPrefix(String targetName) {
-		String s = ChatColor.GOLD + "You" + ChatColor.YELLOW + " > " + ChatColor.GOLD + targetName + ChatColor.RESET + ": ";
-		return s;
+		return ChatColor.GOLD + "You" + ChatColor.YELLOW + " > " + ChatColor.GOLD + targetName + ChatColor.RESET + ": ";
 	}
 	
 	public static String sendReceiverPrefix(String targetName) {
-		String s = ChatColor.GOLD + targetName + ChatColor.YELLOW + " > " + ChatColor.GOLD + "You" + ChatColor.RESET + ": ";
-		return s;
+		return ChatColor.GOLD + targetName + ChatColor.YELLOW + " > " + ChatColor.GOLD + "You" + ChatColor.RESET + ": ";
 	}
 	
 	public static String sendPrefix(String sender, String target) {
-		String s = ChatColor.GOLD + sender + ChatColor.YELLOW + " > " + ChatColor.GOLD + target + ChatColor.RESET + ": ";
-		return s;
+		return ChatColor.GOLD + sender + ChatColor.YELLOW + " > " + ChatColor.GOLD + target + ChatColor.RESET + ": ";
 	}
 }

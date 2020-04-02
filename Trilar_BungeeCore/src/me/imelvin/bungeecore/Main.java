@@ -36,20 +36,25 @@ public class Main extends Plugin {
 	public static MySQL sql;
 	public static Plugin p;
 	public static String hostname;
-	private static int port;
-	private static String db;
-	private static String user;
-	private static String pass;
-	public static String prefix = ChatColor.WHITE + "[" + ChatColor.GOLD + "Trilar" + ChatColor.WHITE + "]" + ChatColor.YELLOW;
+	public static int port;
+	public static String db;
+	public static String user;
+	public static String pass;
+	public static final String PREFIX = ChatColor.WHITE + "[" + ChatColor.GOLD + "Trilar" + ChatColor.WHITE + "]" + ChatColor.YELLOW;
 	
 	public void onEnable() {
 		p = this;
+		c.setup(p);
 		init();
-		sql = new MySQL(hostname, port, db, user, pass);
-		if (!sql.hasConnection()) {
-			sql.openConnection();
+		if (stringCheck(hostname) && stringCheck(db) && stringCheck(user) && stringCheck(pass)) {
+			sql = new MySQL(hostname, port, db, user, pass);
+			if (!sql.hasConnection()) {
+				sql.openConnection();
+			}
+			sql.createTable();
+		} else {
+			ProxyServer.getInstance().getLogger().info("Input data for database incorrect. Have you checked the format?");
 		}
-		sql.createTable();
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Baninfo());
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new Banip());
@@ -90,5 +95,9 @@ public class Main extends Plugin {
 		db = c.getConfig().getString("settings.database.database");
 		user = c.getConfig().getString("settings.database.username");
 		pass = c.getConfig().getString("settings.database.password");
+	}
+
+	private boolean stringCheck(String toCheck) {
+		return (!toCheck.isEmpty() && !toCheck.isBlank());
 	}
 }

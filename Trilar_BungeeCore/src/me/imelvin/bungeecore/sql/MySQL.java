@@ -92,9 +92,7 @@ public class MySQL {
 					+ "?connectTimeout=0&socketTimeout=0&autoReconnect=true", this.user, this.password);
 			this.conn = conn;
 			return conn;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return this.conn;
@@ -107,9 +105,7 @@ public class MySQL {
 				+ "?connectTimeout=0&socketTimeout=0&autoReconnect=true", user, password);
 			this.conn = conn;
 			return conn;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return this.conn;

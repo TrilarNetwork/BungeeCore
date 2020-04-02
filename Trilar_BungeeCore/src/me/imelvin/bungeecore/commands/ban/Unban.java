@@ -18,11 +18,11 @@ public class Unban extends Command 	{
 	public void execute(CommandSender sender, String[] args) {
 			if (args.length != 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /unban <player>"));
-			} else if (args.length == 1) {
+			} else {
 				String name = args[0];
 				if (BanHandler.isBanned(name)) {
 					BanHandler.unbanPlayer(name);
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been unbanned by " + ChatColor.GOLD + sender.getName()
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has been unbanned by " + ChatColor.GOLD + sender.getName()
 							+ ChatColor.YELLOW + "!");
 				} else {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "This player is not banned!"));

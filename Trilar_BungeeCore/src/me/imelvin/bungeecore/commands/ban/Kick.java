@@ -25,14 +25,14 @@ public class Kick extends Command {
 				} else {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "This player is not online!"));
 				}
-			} else if (args.length > 1) {
-				String reason = "";
+			} else {
+				StringBuilder reason = new StringBuilder();
 				for (int i = 1; i < args.length; i++) {
-					reason += args[i] + " ";
+					reason.append(args[i]).append(" ");
 				}
 				ProxiedPlayer tp = ProxyServer.getInstance().getPlayer(args[0]);
 				if (tp.isConnected()) {
-					BanHandler.kickPlayer(tp.getName(), reason.trim());
+					BanHandler.kickPlayer(tp.getName(), reason.toString().trim());
 				} else {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "This player is not online!"));
 				}

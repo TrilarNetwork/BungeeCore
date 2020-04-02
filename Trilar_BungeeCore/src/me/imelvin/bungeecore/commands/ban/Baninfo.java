@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class Baninfo extends Command {
 
 	public Baninfo() {
-		super("lookup", "", new String[] { "plookup", "playerlookup", "lookupplayer" });
+		super("lookup", "", "plookup", "playerlookup", "lookupplayer");
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class Baninfo extends Command {
 			String name = args[0];
 			sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "--=[ " + ChatColor.AQUA + "Player lookup: "
 					+ name + ChatColor.DARK_AQUA + " ]=--"));
-			String pban = "";
+			String pban;
 			boolean pbanr = false;
 			if (BanHandler.isPermBanned(name)) {
 				pban = ChatColor.GREEN + "true";
@@ -33,7 +33,7 @@ public class Baninfo extends Command {
 				sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Reason: "
 						+ ChatColor.translateAlternateColorCodes('&', BanHandler.getBanReason(name))));
 			}
-			String tban = "";
+			String tban;
 			boolean tbanr = false;
 			if (BanHandler.isTempBanned(name)) {
 				tban = ChatColor.GREEN + "true";
@@ -46,7 +46,7 @@ public class Baninfo extends Command {
 				sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Reason: "
 						+ ChatColor.translateAlternateColorCodes('&', BanHandler.getTempBanReason(name))));
 			}
-			String ipban = "";
+			String ipban;
 			boolean ipbanr = false;
 			if (BanHandler.isIPBanned(name, false)) {
 				ipban = ChatColor.GREEN + "true";
@@ -65,7 +65,7 @@ public class Baninfo extends Command {
 					+ ChatColor.translateAlternateColorCodes('&', BanHandler.getKickReason(name))));
 			String mutes = ChatColor.AQUA + "" + BanHandler.getMutes(name);
 			sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Mutes: " + mutes));
-			String ismuted = "";
+			String ismuted;
 			if (BanHandler.isMuted(name)) {
 				ismuted = ChatColor.GREEN + "true";
 			} else {

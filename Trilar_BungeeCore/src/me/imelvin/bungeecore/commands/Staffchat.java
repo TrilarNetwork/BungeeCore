@@ -10,7 +10,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class Staffchat extends Command {
 
 	public Staffchat() {
-		super("staffchat", "", new String[] {"s, sc, staff, schat, staffc"});
+		super("staffchat", "", "s, sc, staff, schat, staffc");
 	}
 	public static ArrayList<String> global = new ArrayList<>();
 	public static ArrayList<String> helpers = new ArrayList<>();

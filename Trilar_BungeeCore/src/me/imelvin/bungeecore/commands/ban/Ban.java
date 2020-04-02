@@ -27,16 +27,16 @@ public class Ban extends Command {
 			} else {
 				BanHandler.banPlayer(name, null);
 			}
-		} else if (args.length > 1) {
+		} else {
 			String name = args[0];
 			if (BanHandler.isBanned(name)) {
-				sender.sendMessage(new TextComponent(Main.prefix + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has already been banned!"));
+				sender.sendMessage(new TextComponent(Main.PREFIX + "Player " + ChatColor.GOLD + name + ChatColor.YELLOW + " has already been banned!"));
 			} else {
-				String reason = "";
+				StringBuilder reason = new StringBuilder();
 				for (int i = 1; i < args.length; i++) {
-					reason += args[i] + " ";
+					reason.append(args[i]).append(" ");
 				}
-				BanHandler.banPlayer(name, reason.trim());
+				BanHandler.banPlayer(name, reason.toString().trim());
 			}
 		}
 	}

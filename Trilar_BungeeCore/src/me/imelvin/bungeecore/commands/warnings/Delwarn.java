@@ -11,7 +11,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class Delwarn extends Command {
 
 	public Delwarn() {
-		super("delwarn", "", new String[] {"deletewarn", "deletewarning", "removewarn", "removewarning"});
+		super("delwarn", "", "deletewarn", "deletewarning", "removewarn", "removewarning");
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class Delwarn extends Command {
 				}
 				if (WarnHandler.exists(name, label)) {
 					WarnHandler.deleteWarn(name, label);
-					Chat.msgAllOps(Main.prefix + "Player " + ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + " has removed a warn from " 
+					Chat.msgAllOps(Main.PREFIX + "Player " + ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + " has removed a warn from "
 							+ ChatColor.GOLD + name + ChatColor.YELLOW + "!");
 				} else {
 					sender.sendMessage(new TextComponent(ChatColor.RED + "Warning with label " + label + " does not exists for player " + name + "!"));

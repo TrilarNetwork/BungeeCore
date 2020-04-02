@@ -20,18 +20,18 @@ public class Report extends Command {
 			if (args.length < 1) {
 				sender.sendMessage(new TextComponent(ChatColor.RED + "Invalid usage! Use: /report <message>"));
 			} else {
-				String msg = "";
-				for (int i = 0; i < args.length; i++) {
-					msg += args[i] + " ";
+				StringBuilder msg = new StringBuilder();
+				for (String arg : args) {
+					msg.append(arg).append(" ");
 				}
-				msg = ChatColor.translateAlternateColorCodes('&', msg).trim();
+				msg = new StringBuilder(ChatColor.translateAlternateColorCodes('&', msg.toString()).trim());
 				if (sender instanceof ProxiedPlayer) {
-					ReportHandler.makeReport(sender.getName(), msg);
+					ReportHandler.makeReport(sender.getName(), msg.toString());
 				} else {
-					ReportHandler.makeReport("CONSOLE", msg);
+					ReportHandler.makeReport("CONSOLE", msg.toString());
 				}
-				sender.sendMessage(new TextComponent(Main.prefix + "You have successfully created a report ticket! Our Staff Team will take action as soon as possible."));
-				Chat.msgAllOps(Main.prefix + "Player " + sender.getName() + " has created a report.");
+				sender.sendMessage(new TextComponent(Main.PREFIX + "You have successfully created a report ticket! Our Staff Team will take action as soon as possible."));
+				Chat.msgAllOps(Main.PREFIX + "Player " + sender.getName() + " has created a report.");
 			}
 	}
 }

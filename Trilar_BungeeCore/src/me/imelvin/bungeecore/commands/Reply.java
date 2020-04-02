@@ -32,10 +32,10 @@ public class Reply extends Command {
 					if (tp != null) {
 						if (tp.isConnected()) {
 							StringBuilder sb = new StringBuilder();
-							for (int i = 0; i < args.length; i++) {
-								sb.append(args[i]).append(" ");
+							for (String arg : args) {
+								sb.append(arg).append(" ");
 							}
-							String msg = "";
+							String msg;
 							if (sender.hasPermission("trilar.chatcolors.use")) {
 								msg = ChatColor.translateAlternateColorCodes('&', sb.toString().trim());
 							} else {
@@ -65,10 +65,10 @@ public class Reply extends Command {
 					if (tp != null) {
 						if (tp.isConnected()) {
 							StringBuilder sb = new StringBuilder();
-							for (int i = 0; i < args.length; i++) {
-								sb.append(args[i]).append(" ");
+							for (String arg : args) {
+								sb.append(arg).append(" ");
 							}
-							String msg = "";
+							String msg;
 							if (sender.hasPermission("trilar.chatcolors.use")) {
 								msg = ChatColor.translateAlternateColorCodes('&', sb.toString().trim());
 							} else {

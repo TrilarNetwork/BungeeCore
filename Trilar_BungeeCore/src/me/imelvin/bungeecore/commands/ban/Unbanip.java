@@ -25,15 +25,15 @@ public class Unbanip extends Command {
 					String ip = args[0];
 					if (BanHandler.isIPBanned(ip, true)) {
 						BanHandler.unbanIP(IPSaver.getNameFromIp(ip), true);
-						Chat.msgAllOps(Main.prefix + "IP: " + ChatColor.GOLD + ip + ChatColor.YELLOW + "(" + ChatColor.GOLD + IPSaver.getNameFromIp(ip) 
+						Chat.msgAllOps(Main.PREFIX + "IP: " + ChatColor.GOLD + ip + ChatColor.YELLOW + "(" + ChatColor.GOLD + IPSaver.getNameFromIp(ip)
 							+ ChatColor.YELLOW + ") has been unbanned by " + ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + "!");
 					}
 				} else {
 					String name = args[0];
 					if (BanHandler.isIPBanned(name, false)) {
 						BanHandler.unbanIP(name, false);
-						String ip = ProxyServer.getInstance().getPlayer(name).getAddress().toString();
-						Chat.msgAllOps(Main.prefix + "IP: " + ChatColor.GOLD + ip + ChatColor.YELLOW + "(" + ChatColor.GOLD + IPSaver.getNameFromIp(ip) 
+						String ip = ProxyServer.getInstance().getPlayer(name).getPendingConnection().getVirtualHost().getAddress().toString();
+						Chat.msgAllOps(Main.PREFIX + "IP: " + ChatColor.GOLD + ip + ChatColor.YELLOW + "(" + ChatColor.GOLD + IPSaver.getNameFromIp(ip)
 						+ ChatColor.YELLOW + ") has been unbanned by " + ChatColor.GOLD + sender.getName() + ChatColor.YELLOW + "!");
 					}
 				}

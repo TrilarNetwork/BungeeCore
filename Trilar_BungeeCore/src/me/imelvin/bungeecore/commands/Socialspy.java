@@ -22,10 +22,10 @@ public class Socialspy extends Command {
 				} else {
 					if (Msg.socialspy.contains(sender.getName())) {
 						Msg.socialspy.remove(sender.getName());
-						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "disabled" + ChatColor.DARK_AQUA + "!"));
+						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Social Spy has been " + ChatColor.AQUA + "disabled" + ChatColor.DARK_AQUA + "!"));
 					} else {
 						Msg.socialspy.add(sender.getName());
-						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Socialspy has been " + ChatColor.AQUA + "enabled" + ChatColor.DARK_AQUA + "!"));
+						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "Your Social Spy has been " + ChatColor.AQUA + "enabled" + ChatColor.DARK_AQUA + "!"));
 					}
 				}
 			}
