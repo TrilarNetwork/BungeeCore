@@ -9,26 +9,26 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 public class ChatEvents implements Listener {
-	public String staffpref = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
-	public String helpersp = ChatColor.GOLD + "[" + ChatColor.YELLOW + "Helper Staff-Chat" + ChatColor.GOLD + "] " + ChatColor.YELLOW;
-	public String modsp = ChatColor.DARK_BLUE + "[" + ChatColor.BLUE + "Moderator Staff-Chat" + ChatColor.DARK_BLUE + "] " + ChatColor.BLUE;
-	public String adminsp = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Admin Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
-	public String owner = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Owner/Developer Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
+	private final String STAFF = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
+	private final String HELPER = ChatColor.GOLD + "[" + ChatColor.YELLOW + "Helper Staff-Chat" + ChatColor.GOLD + "] " + ChatColor.YELLOW;
+	private final String MOD = ChatColor.DARK_BLUE + "[" + ChatColor.BLUE + "Moderator Staff-Chat" + ChatColor.DARK_BLUE + "] " + ChatColor.BLUE;
+	private final String ADMIN = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Admin Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
+	private final String OWNER = ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Owner/Developer Staff-Chat" + ChatColor.DARK_AQUA + "] " + ChatColor.AQUA;
 
 	@EventHandler
 	public void onChat(ChatEvent e) {
 		if (e.getSender() instanceof ProxiedPlayer) {
 			ProxiedPlayer p = (ProxiedPlayer) e.getSender();
 			if (Staffchat.global.contains(p.getName()) || e.getMessage().startsWith("!")) {
-				Chat.msgAllOps(staffpref + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				Chat.msgAllOps(STAFF + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.helpers.contains(p.getName())) {
-				Chat.msgAllHelpers(helpersp + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				Chat.msgAllHelpers(HELPER + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.moderator.contains(p.getName())) {
-				Chat.msgAllMods(modsp + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				Chat.msgAllMods(MOD + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.admins.contains(p.getName())) {
-				Chat.msgAllAdmin(adminsp + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				Chat.msgAllAdmin(ADMIN + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.owners.contains(p.getName())) {
-				Chat.msgAllOwners(owner + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				Chat.msgAllOwners(OWNER + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			}
 		}
 	}
