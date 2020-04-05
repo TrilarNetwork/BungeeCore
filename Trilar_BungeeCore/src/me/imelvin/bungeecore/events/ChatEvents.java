@@ -1,5 +1,6 @@
 package me.imelvin.bungeecore.events;
 
+import me.imelvin.bungeecore.Main;
 import me.imelvin.bungeecore.commands.Staffchat;
 import me.imelvin.bungeecore.handlers.Chat;
 import net.md_5.bungee.api.ChatColor;
@@ -19,16 +20,22 @@ public class ChatEvents implements Listener {
 	public void onChat(ChatEvent e) {
 		if (e.getSender() instanceof ProxiedPlayer) {
 			ProxiedPlayer p = (ProxiedPlayer) e.getSender();
-			if (Staffchat.global.contains(p.getName()) || e.getMessage().startsWith("!")) {
-				Chat.msgAllOps(STAFF + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+			if (Staffchat.global.contains(p.getName()) || (e.getMessage().startsWith(Main.staffChatPrefix) && (p.getPermissions().contains("trilar.staffchat.*")
+					|| p.getPermissions().contains("trilar.staffchat")))) {
+				e.setCancelled(true);
+				Chat.msgAllOps(STAFF + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ": " + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.helpers.contains(p.getName())) {
-				Chat.msgAllHelpers(HELPER + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				e.setCancelled(true);
+				Chat.msgAllHelpers(HELPER + "[" + p.getServer().getInfo().getName() + "] " + p.getName()  + ": " + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.moderator.contains(p.getName())) {
-				Chat.msgAllMods(MOD + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				e.setCancelled(true);
+				Chat.msgAllMods(MOD + "[" + p.getServer().getInfo().getName() + "] " + p.getName()  + ": " + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.admins.contains(p.getName())) {
-				Chat.msgAllAdmin(ADMIN + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				e.setCancelled(true);
+				Chat.msgAllAdmin(ADMIN + "[" + p.getServer().getInfo().getName() + "] " + p.getName()  + ": " + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			} else if (Staffchat.owners.contains(p.getName())) {
-				Chat.msgAllOwners(OWNER + "[" + p.getServer().getInfo().getName() + "] " + p.getName() + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+				e.setCancelled(true);
+				Chat.msgAllOwners(OWNER + "[" + p.getServer().getInfo().getName() + "] " + p.getName()  + ": " + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
 			}
 		}
 	}

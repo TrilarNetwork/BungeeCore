@@ -40,7 +40,8 @@ public class Main extends Plugin {
 	public static String db;
 	public static String user;
 	public static String pass;
-	public static final String PREFIX = ChatColor.WHITE + "[" + ChatColor.GOLD + "Trilar" + ChatColor.WHITE + "]" + ChatColor.YELLOW;
+	public static final String PREFIX = ChatColor.WHITE + "[" + ChatColor.GOLD + "Trilar" + ChatColor.WHITE + "] " + ChatColor.YELLOW;
+	public static String staffChatPrefix;
 	
 	public void onEnable() {
 		p = this;
@@ -95,6 +96,7 @@ public class Main extends Plugin {
 		db = c.getConfig().getString("settings.database.database");
 		user = c.getConfig().getString("settings.database.username");
 		pass = c.getConfig().getString("settings.database.password");
+		staffChatPrefix = c.getConfig().getString("settings.talkInStaffChat");
 	}
 
 	private boolean stringCheck(String toCheck) {

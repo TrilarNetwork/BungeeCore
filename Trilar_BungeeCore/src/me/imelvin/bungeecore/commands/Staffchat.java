@@ -10,7 +10,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class Staffchat extends Command {
 
 	public Staffchat() {
-		super("staffchat", "", "s, sc, staff, schat, staffc");
+		super("staffchat", "", "s", "sc", "staff", "schat", "staffc");
 	}
 	public static ArrayList<String> global = new ArrayList<>();
 	public static ArrayList<String> helpers = new ArrayList<>();
@@ -24,12 +24,24 @@ public class Staffchat extends Command {
 				if (global.contains(sender.getName())) {
 					global.remove(sender.getName());
 					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
+				} else if (helpers.contains(sender.getName())) {
+					helpers.remove(sender.getName());
+					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
+				} else if (moderator.contains(sender.getName())) {
+					moderator.remove(sender.getName());
+					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
+				} else if (admins.contains(sender.getName())) {
+					admins.remove(sender.getName());
+					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
+				} else if (owners.contains(sender.getName())) {
+					owners.remove(sender.getName());
+					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
 				} else {
 					global.add(sender.getName());
 					sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "enabled" + ChatColor.DARK_AQUA + " Staff-Chat!"));
 				}
 			} else if (args.length == 1) {
-				if (args[0].equalsIgnoreCase("helpers") || args[0].equalsIgnoreCase("h")) {
+				if (args[0].equalsIgnoreCase("helper") || args[0].equalsIgnoreCase("h")) {
 					if (helpers.contains(sender.getName())) {
 						helpers.remove(sender.getName());
 						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA	+ " Helper Staff-Chat!"));
@@ -37,7 +49,7 @@ public class Staffchat extends Command {
 						helpers.add(sender.getName());
 						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "enabled" + ChatColor.DARK_AQUA + " Helper Staff-Chat!"));
 					}
-				} else if (args[0].equalsIgnoreCase("moderators") || args[0].equalsIgnoreCase("mods") || args[0].equalsIgnoreCase("m")) {
+				} else if (args[0].equalsIgnoreCase("moderator") || args[0].equalsIgnoreCase("mods") || args[0].equalsIgnoreCase("m")) {
 					if (moderator.contains(sender.getName())) {
 						moderator.remove(sender.getName());
 						sender.sendMessage(new TextComponent(ChatColor.DARK_AQUA + "You have " + ChatColor.AQUA +  "disabled" + ChatColor.DARK_AQUA	+ " Moderator Staff-Chat!"));
